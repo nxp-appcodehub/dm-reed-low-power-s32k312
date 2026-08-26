@@ -20,8 +20,8 @@ This example demonstrates how to wake up the S32K312 MCU from Standby mode throu
 6. [Release Notes](#step6)
 
 ## 1. Software and Tools<a name="step1"></a>
-This example was developed using the FRDM Automotive Bundle for S32K3. To download and install the complete software and tools ecosystem, use the following link:<br>
-- [S32K3 FRDM Automotive Board Installation Package](https://www.nxp.com/app-autopackagemgr/automotive-software-package-manager:AUTO-SW-PACKAGE-MANAGER?currentTab=0&selectedDevices=S32K3&applicationVersionID=156)
+This example was developed using the FRDM Automotive Bundle for S32K3 + S32M27. To download and install the complete software and tools ecosystem, use the following link:<br>
+- [FRDM Automotive S32K3 + S32M27 Board Installation Package](https://www.nxp.com/app-autopackagemgr/automotive-software-package-manager:AUTO-SW-PACKAGE-MANAGER?currentTab=0&selectedDevices=S32K3&applicationVersionID=203)
 
 ## 2. Hardware<a name="step2"></a>
 ### 2.1 Required Hardware
@@ -56,19 +56,33 @@ This example was developed using the FRDM Automotive Bundle for S32K3. To downlo
 
 ### 3.1 Import the Project into S32 Design Studio IDE
 1. Open S32 Design Studio IDE, in the Dashboard Panel, choose **Import project from Application Code Hub**.
-   [<p align="center"><img src="images/import_project_1.png" width="400"/></p>](./images/import_project_1.png)
+[<p align="center"><img src="images/import_project_1.png" width="400"/></p>](./images/import_project_1.png)
 
-2. Find the demo by searching: [dm-reed-low-power-s32k312](https://mcuxpresso.nxp.com/appcodehub?search=dm-reed-low-power-s32k312)
-3. Open the project, click the **GitHub link**, S32 Design Studio IDE will automatically retrieve project attributes, then click **Next>**.
-    [<p align="center"><img src="images/import_project_3.png" width="600"/></p>](./images/import_project_3.png)
+2. Find the demo you need by searching for the name directly.<br>
+Open the project, click on the **GitHub link** from this window, S32 Design Studio IDE will automatically retrieve project attributes, then click **Next>**.
+[<p align="center"><img src="images/import_project_3.png" width="600"/></p>](./images/import_project_3.png)
 
-4. Select **main** branch and then click **Next>**.
+3. Select **main** branch and then click **Next>**.
+4. Select your local path for the repo in **Destination->Directory** window. The S32 Design Studio IDE will clone the repo into this path, click **Next>**.
 
-5. Select your local path for the repo in **Destination->Directory:** window. The S32 Design Studio IDE will clone the repo into this path, click **Next>**.
+5. Select **Import existing Eclipse projects** then click **Next>**.
 
-6. Select **Import existing Eclipse projects** then click **Next>**.
+6. Select the project in this repo (only one project in this repo) then click **Finish**.
+### 3.2 Generating, Building and Running the Example
+1. In Project Explorer, right-click the project and select **Update Code and Build Project**. This will generate the configuration (Pins, Clocks, Peripherals), update the source code and build the project using the active configuration (e.g. Debug_FLASH).
+Make sure the build completes successfully and the *.elf file is generated without errors.
+[<p align="center"><img src="images/update_and_build.png" width="200"/></p>](./images/update_and_build.png)
+Press **Yes** in the **SDK Component Management** pop-up window to continue.
 
-7. Select the project in this repo (only one project in this repo) then click **Finish**.
+2. Go to **Debug** and select **Debug Configurations**. There will be a debug configuration for this project:
+[<p align="center"><img src="images/Debug_config.png" width="200"/></p>](./images/Debug_config.png)
+
+        Configuration Name                  Description
+        -------------------------------     -----------------------
+        $(example)_debug_flash_pemicro      Debug the FLASH configuration using PEmicro probe
+
+    Select the desired debug configuration and click on **Debug**. Now the perspective will change to the **Debug Perspective**.
+    Use the controls to control the program flow.
 
 ### 3.2 Generating, Building and Running the Example
 1. In Project Explorer, right-click the project and select **Update Code and Build Project**. This will generate the configuration (Pins, Clocks, Peripherals), update the source code and build the project using the active configuration (e.g. Debug_FLASH).
@@ -134,3 +148,4 @@ Questions regarding the content/correctness of this example can be entered as Is
 | Version | Description / Update                           | Date                        |
 |:-------:|------------------------------------------------|----------------------------:|
 | 1.0     | Initial release on Application Code Hub        | August 6<sup>th</sup> 2026  |
+| 1.1     | Updated to FRDM Automotive S32K3 + S32M27 (RTD 7.0.1)        |August 26<sup>th</sup> 2026|

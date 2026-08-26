@@ -7,10 +7,10 @@
 *   Autosar Version      : 4.9.0
 *   Autosar Revision     : ASR_REL_4_9_REV_0000
 *   Autosar Conf.Variant :
-*   SW Version           : 7.0.0
-*   Build Version        : S32K3_RTD_7_0_0_QLP03_D2512_ASR_REL_4_9_REV_0000_20251210
+*   SW Version           : 7.0.1
+*   Build Version        : S32K3_RTD_7_0_1_D2602_ASR_REL_4_9_REV_0000_20260206
 *
-*   Copyright 2020 - 2025 NXP
+*   Copyright 2020 - 2026 NXP
 *
 *   NXP Proprietary. This software is owned or controlled by NXP and may only be
 *   used strictly in accordance with the applicable license terms. By expressly
@@ -22,7 +22,7 @@
 ==================================================================================================*/
 /*================================================================================================
 *   @file    system.c
-*   @version 7.0.0
+*   @version 7.0.1
 *
 *   @brief   AUTOSAR Platform - SYSTEM
 *   @details SYSTEM
@@ -543,11 +543,19 @@ void SystemInit(void)
     #endif
 #endif
 
+#if defined(S32K389)
+    /*Ram shareable section*/
+    rbar[8]=(uint32)__RAM_SHAREABLE_START;
+    /* Size: import information from linker symbol, Type: Normal, Inner Cache Policy: None, Outer Cache Policy: None, Shareable: Yes, Privileged Access:RW, Unprivileged Access:RW */
+    rasr[8]=((uint32)0x130C0001UL)|(((uint32)__RAM_SHAREABLE_SIZE - 1) << 1)|(1<<15)|(1<<14);
+    /* Additional configuration for peripheral device*/
+#else
     /*Ram shareable section*/
     rbar[8]=(uint32)__RAM_SHAREABLE_START;
     /* Size: import information from linker symbol, Type: Normal, Inner Cache Policy: None, Outer Cache Policy: None, Shareable: Yes, Privileged Access:RW, Unprivileged Access:RW */
     rasr[8]=((uint32)0x130C0001UL)|(((uint32)__RAM_SHAREABLE_SIZE - 1) << 1);
     /* Additional configuration for peripheral device*/
+#endif
 
     /*AIPS_0, AIPS_1, AIPS_2*/
     rbar[9]=0x40000000UL;

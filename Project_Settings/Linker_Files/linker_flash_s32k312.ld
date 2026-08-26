@@ -7,10 +7,10 @@
 *   Autosar Version      : 4.9.0
 *   Autosar Revision     : ASR_REL_4_9_REV_0000
 *   Autosar Conf.Variant :
-*   SW Version           : 7.0.0
-*   Build Version        : S32K3_RTD_7_0_0_QLP03_D2512_ASR_REL_4_9_REV_0000_20251210
+*   SW Version           : 7.0.1
+*   Build Version        : S32K3_RTD_7_0_1_D2602_ASR_REL_4_9_REV_0000_20260206
 *
-*   Copyright 2020 - 2025 NXP
+*   Copyright 2020 - 2026 NXP
 *
 *   NXP Proprietary. This software is owned or controlled by NXP and may only be
 *   used strictly in accordance with the applicable license terms. By expressly
